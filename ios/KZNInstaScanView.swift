@@ -62,6 +62,12 @@ public class KZNInstaScanView:InstaScanView{
             configuration.apiKey = apiKey
         }
     }
+
+    @objc public var debugMode:Bool = false{
+        didSet{
+            configuration.debugMode = debugMode
+        }
+    }
     
     @objc public var guideText:String = ""{
         didSet{

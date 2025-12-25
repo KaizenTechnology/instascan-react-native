@@ -50,6 +50,10 @@ public class InstaScanViewManager extends SimpleViewManager<KZNInstaScanView> {
     public void setApiKey(KZNInstaScanView view, String apiKey) {
         view.getConfiguration().setApiKey(apiKey);
     }
+    @ReactProp(name = "debugMode")
+    public void setDebugMode(KZNInstaScanView view, boolean debugMode) {
+        view.getConfiguration().setDebugMode(debugMode);
+    }
     @ReactProp(name = "guideText")
     public void setGuideText(KZNInstaScanView view, String guideText) {
         view.getConfiguration().setGuideText(guideText);
@@ -166,6 +170,5 @@ public class InstaScanViewManager extends SimpleViewManager<KZNInstaScanView> {
                 root.updateGuideText(args.getString(0));
                 break;
         }
-
     }
 }

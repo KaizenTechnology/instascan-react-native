@@ -23,6 +23,7 @@
     RCT_EXPORT_VIEW_PROPERTY(torchStatus, BOOL)
 
     RCT_EXPORT_VIEW_PROPERTY(apiKey, NSString)
+    RCT_EXPORT_VIEW_PROPERTY(debugMode, BOOL)
     RCT_EXPORT_VIEW_PROPERTY(guideText, NSString)
 
     RCT_EXPORT_VIEW_PROPERTY(algorithm, NSInteger)

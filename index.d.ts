@@ -5,18 +5,19 @@ declare module "instascan-react-native" {
   export namespace InstaScan {
     export interface Props extends ViewProps {
       apiKey: string;
+      debugMode: boolean;
       sampleCount: Number;
       minTextHeight: Number;
       guideAreaWidthRatio: Number;
       guideAreaAspectRatio: Number;
-      zoomLevel: Number;
+      zoomFactor: Number;
       allowedChars: string;
       minDigits: Number;
       maxDigits: Number;
       replaceMap: Object;
       validTextHighlightColor: string;
       invalidTextHighlightColor: string;
-      uideTextColor: string;
+      guideTextColor: string;
       guideTextFontName: string;
       guideTextFontSize: string;
       overlayColor: string;
@@ -25,7 +26,6 @@ declare module "instascan-react-native" {
       onPincodeRead?: (event: PincodeEvent) => void;
       onError?: (event: ErrorEvent) => void;
       onLoad?: () => void;
-
     }
 
     type Algorithm = Readonly<{
@@ -39,20 +39,18 @@ declare module "instascan-react-native" {
       FAR: any;
     }>;
 
-    type Resolution = Readonly<{
-      UHD: any;
-      FHD: any;
-      HD: any;
-      VGA: any;
-    }>;
-
-    export interface Constants {
-      Algorithm: Algorithm,
-      FocusRestriction: FocusRestriction,
-      Resolution: Resolution,
+    enum Resolution {
+      UHD = 1,
+      FHD = 2,
+      HD = 3,
+      VGA = 4,
     }
 
-
+    export interface Constants {
+      Algorithm: Algorithm;
+      FocusRestriction: FocusRestriction;
+      Resolution: Resolution;
+    }
 
     export interface PincodeEvent {
       pincode: string;
@@ -63,15 +61,11 @@ declare module "instascan-react-native" {
     export interface ErrorEvent {
       code: Number;
       description: string;
-    } 
+    }
   }
-
-
-
 
   export class InstaScan extends Component<InstaScan.Props> {
     static Constants: Constants;
-
     getTorchStatus: () => Promise;
     toggleTorch: () => void;
   }
